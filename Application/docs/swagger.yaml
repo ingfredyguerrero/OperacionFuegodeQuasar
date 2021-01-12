@@ -1,0 +1,76 @@
+basePath: /
+definitions:
+  main.requestSingleSatellite:
+    properties:
+      distance:
+        type: number
+      message:
+        items:
+          type: string
+        type: array
+    type: object
+host: localhost:9876
+info:
+  contact:
+    email: ingfredyguerrero@hotmail.com
+    name: API Satellite
+  description: This is a service for calculate the Lotation of consumers
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Satellite API
+  version: "1.0"
+paths:
+  /topSecret:
+    post:
+      consumes:
+      - application/json
+      description: set distance of satellites and get location of consumers
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: set distance of satellites and get location of consumers
+      tags:
+      - intercept
+  /topsecret_split:
+    get:
+      consumes:
+      - application/json
+      description: Get location of consumers
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Get location of consumers
+      tags:
+      - intercept
+  /topsecret_split/{satellite_name}:
+    post:
+      consumes:
+      - application/json
+      description: set location of satellite
+      parameters:
+      - description: Distance of Satellite
+        in: body
+        name: RequestSingleSatellite
+        required: true
+        schema:
+          $ref: '#/definitions/main.requestSingleSatellite'
+      - description: name of Satellite
+        in: path
+        name: satellite_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: set location of satellite
+      tags:
+      - intercept
+swagger: "2.0"

@@ -1,0 +1,115 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a service for calculate the Lotation of consumers",
+        "title": "Satellite API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Satellite",
+            "email": "ingfredyguerrero@hotmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:9876",
+    "basePath": "/",
+    "paths": {
+        "/topSecret": {
+            "post": {
+                "description": "set distance of satellites and get location of consumers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "intercept"
+                ],
+                "summary": "set distance of satellites and get location of consumers",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/topsecret_split": {
+            "get": {
+                "description": "Get location of consumers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "intercept"
+                ],
+                "summary": "Get location of consumers",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/topsecret_split/{satellite_name}": {
+            "post": {
+                "description": "set location of satellite",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "intercept"
+                ],
+                "summary": "set location of satellite",
+                "parameters": [
+                    {
+                        "description": "Distance of Satellite",
+                        "name": "RequestSingleSatellite",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.requestSingleSatellite"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "name of Satellite",
+                        "name": "satellite_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.requestSingleSatellite": {
+            "type": "object",
+            "properties": {
+                "distance": {
+                    "type": "number"
+                },
+                "message": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
